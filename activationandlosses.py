@@ -3,7 +3,7 @@ from activationlayer import ActiviationLayer
 import numpy as np 
 
 class TanH(ActiviationLayer):
-    def __init__(self, activation, activation_integral) -> None:
+    def __init__(self) -> None:
         # could put these into lambda functions as of tutorial
         def calctanh(x):
             return np.tanh(x)
@@ -12,7 +12,7 @@ class TanH(ActiviationLayer):
         
         tanh = calctanh
         tanh_prime = calctanh_integral
-        super().__init__(activation, activation_integral)
+        super().__init__(tanh, tanh_prime)
 
 #   loss function calculator
 def meansqaureerror(true_output, predicted_output):
