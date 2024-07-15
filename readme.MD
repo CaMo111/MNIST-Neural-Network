@@ -35,6 +35,11 @@ Repeat this process training the model.
 
 ![alt text](layer_structure.png)
 
+# TO DO 
+
+- implement shaping properly
+- think about a convolutional model instead of regular NN.
+
 # Steps to Build the Neural Network
 
 ### Step 1: Import Libraries

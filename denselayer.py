@@ -13,7 +13,7 @@ class DenseLayer(Layer):
 
     def forward(self, input):
         self.input = input 
-        return np.dot(self.weights, self.input) + self.bias #matrix multiplication of all nodes.
+        return np.dot(self.input, self.weights) + self.bias #matrix multiplication of all nodes.
     
     def backward(self, output_gradient, learning_rate):
         '''

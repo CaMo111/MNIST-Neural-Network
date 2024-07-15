@@ -32,6 +32,9 @@ class NeuralNetwork:
         for ith_pixel in training_data:
             for unique in ith_pixel:
                 unique = (1/255) * unique
+
+        dev_data, training_data = dev_data.T, training_data.T
+
         return dev_labels, dev_data, training_labels, training_data
     
     def predict(self, input):
@@ -41,6 +44,7 @@ class NeuralNetwork:
         return output
 
     def train(self, image, label, loss=activationandlosses.meansqaureerror, lossprime=activationandlosses.meansquareerror_integral,epochs=59000, learning_rate=0.1):
+        print("called1")
         for e in range(epochs):
             error = 0
         for image, label in zip(image, label):
@@ -53,8 +57,8 @@ class NeuralNetwork:
             for layer in reversed(self.layers):
                 gradient = layer.backward(gradient, learning_rate)
 
-        error /= len(image)
-        print(f"{e + 1}/{epochs}, error={error}")
+            error /= len(image)
+            print(f"{e + 1}/{epochs}, error={error}")
  
 network = NeuralNetwork()
 
