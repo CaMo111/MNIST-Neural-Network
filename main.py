@@ -51,6 +51,12 @@ class NeuralNetwork:
 
         return dev_labels, dev_data, training_labels, training_data
     
+    def predict(self, input):
+        output = input
+        for layer in network.layers:
+            output = layer.forward(output)
+        return output
+
     def train(self, loss, lossprime, image_or_data, label, epochs=100, learning_rate=0.1):
         for e in range(epochs):
             error = 0
