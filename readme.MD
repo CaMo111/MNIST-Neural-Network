@@ -16,6 +16,25 @@ You can install the required libraries using pip install requirements.txt
 # Dataset
 The MNIST dataset can be downloaded from [here](https://www.kaggle.com/datasets/oddrationale/mnist-in-csv?resource=download). It includes a training set of 60,000 examples and a test set of 10,000 examples.
 
+# How does This work ?
+
+## 1 - Feed Input
+Data flows from layer to layer. retrieve output.
+y = network(x, w)
+
+## 2 - Calculate the error
+compare output of neural network with the desired output.
+
+## 3 - Adjust parameters
+use gradient descent to change parameters to be better for future.
+
+## 4 - Start Again.
+Repeat this process training the model.
+
+# Layered Structure
+
+![alt text](layer_structure.png)
+
 # Steps to Build the Neural Network
 
 ### Step 1: Import Libraries
@@ -25,7 +44,7 @@ Begin by importing the necessary libraries
 Load the MNIST dataset and preprocess it by normalizing the pixel values and converting labels to one-hot encoding:
 
 ### Step 3: Initialize Network Parameters
-Initialize the weights and biases for the neural network:
+Initialize the weights and biases for the neural network
 
 ### Step 4: Define Activation Functions
 Define the sigmoid, tanh and softmax activation functions and their derivatives:
