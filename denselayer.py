@@ -13,13 +13,31 @@ class DenseLayer(Layer):
 
     def forward(self, input):
         self.input = input 
-        return np.dot(self.input, self.weights) + self.bias #matrix multiplication of all nodes.
+        #if not change to try and except statement
+        try:
+            return np.dot(self.weights, self.input) + self.bias
+        except:
+            return np.dot(self.input, self.weights) + self.bias #matrix multiplication of all nodes.
     
     def backward(self, output_gradient, learning_rate):
         '''
         '''
-        weights_gradient = np.dot(output_gradient, self.input.T) #see read me calculating weights gradient sect
-        input_gradient = np.dot(self.weights.T, output_gradient) # multiplying the weights matrix by the matrix representing the error gradient column matrix
-        self.weights -= learning_rate * weights_gradient 
-        self.bias -= learning_rate * output_gradient
+        try:
+            weights_gradient = np.dot(output_gradient, self.input.T)
+        except:
+            weights_gradient = np.dot(self.input.T, output_gradient) #matrix multiplication of all nodes.
+        try:
+            input_gradient = np.dot(self.weights.T, output_gradient)
+        except:
+            input_gradient = np.dot(output_gradient, self.weights.T)
+        #update values
+        try:
+            self.weights = self.weights - (learning_rate * weights_gradient)
+        except:
+            self.weights = self.weights - (weights_gradient  * learning_rate)
+        try:
+            self.bias = self.bias - (learning_rate * output_gradient)
+        except:
+            self.bias = self.bias - (output_gradient * learning_rate)
+
         return input_gradient

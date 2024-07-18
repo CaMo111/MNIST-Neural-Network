@@ -19,5 +19,6 @@ class ActiviationLayer(Layer):
         to curr layer. Thus to get error gradient of input layer we are simply doing dot product from the integral of 
         the nodes activation function to the error loss of the node.
         '''
+        np.reshape(output_gradient, self.activationprime(self.input))
         return np.multiply(output_gradient, self.activationprime(self.input))
         
